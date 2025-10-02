@@ -4,7 +4,7 @@ public abstract class Iphone {
 
     private String modelo;
     private String cor;
-    private boolean ligado;
+    protected boolean ligado;
 
     public Iphone(String modelo, String cor) {
         this.modelo = modelo;

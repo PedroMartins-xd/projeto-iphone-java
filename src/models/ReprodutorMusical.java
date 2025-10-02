@@ -1,6 +1,7 @@
 package models;
 
 import exceptions.AparelhoDesligado;
+import exceptions.TocandoMusica;
 import interfaces.IReprodutorMusical;
 
 public class ReprodutorMusical extends Iphone implements IReprodutorMusical {
@@ -34,6 +35,20 @@ public class ReprodutorMusical extends Iphone implements IReprodutorMusical {
 
     @Override
     public void pausarMusica() {
-
+        if (this.isLigado() == true) {
+            if (this.play == true) {
+                this.play = false;
+                System.out.println("Pausando musica...");
+            } else {
+                throw new TocandoMusica(
+                        "Não foi possivel! a musica ja esta pausada"
+                );
+            }
+        } else {
+            throw new AparelhoDesligado(
+                    "O aparelho telefonico esta desligado," +
+                            " não é possivel tocar uma musica"
+            );
+        }
     }
 }
